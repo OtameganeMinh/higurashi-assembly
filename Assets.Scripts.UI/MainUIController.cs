@@ -1,4 +1,4 @@
-using Assets.Scripts.Core;
+﻿using Assets.Scripts.Core;
 using Assets.Scripts.Core.Buriko;
 using Assets.Scripts.Core.Scene;
 using MOD.Scripts.UI;
@@ -584,12 +584,12 @@ namespace Assets.Scripts.UI
 						array6[k] = BurikoMemory.Instance.GetGlobalFlag(array3[k]).IntValue().ToString();
 					}
 				}
-				string text = (BurikoMemory.Instance.GetGlobalFlag("GMOD_SETTING_LOADER").IntValue() == 0) ? "\nRestore ADV-MODE Settings\nRelaunch Game 2 Times" : ((BurikoMemory.Instance.GetGlobalFlag("GMOD_SETTING_LOADER").IntValue() == 1) ? "\nRestore NVL-MODE Settings\nRelaunch Game 2 Times" : ((BurikoMemory.Instance.GetGlobalFlag("GMOD_SETTING_LOADER").IntValue() == 2) ? "\nRestore Vanilla Settings\nRelaunch Game and Delete MOD" : ((BurikoMemory.Instance.GetGlobalFlag("GMOD_SETTING_LOADER").IntValue() != 3) ? "\nERROR" : "\nDisable")));
+				string text = (BurikoMemory.Instance.GetGlobalFlag("GMOD_SETTING_LOADER").IntValue() == 0) ? "\nKhôi phục tùy chỉnh chế độ ADV\nHãy chạy lại game 2 lần" : ((BurikoMemory.Instance.GetGlobalFlag("GMOD_SETTING_LOADER").IntValue() == 1) ? "\nKhôi phục tùy chỉnh chế độ NVL\nHãy chạy lại game 2 lần" : ((BurikoMemory.Instance.GetGlobalFlag("GMOD_SETTING_LOADER").IntValue() == 2) ? "\nKhôi phục cài đặt gốc\nHãy chạy lại game và xóa bản mod" : ((BurikoMemory.Instance.GetGlobalFlag("GMOD_SETTING_LOADER").IntValue() != 3) ? "\nLỖI" : "\nTắt")));
 				string text2 = BurikoMemory.Instance.GetGlobalFlag("GVoiceVolume").IntValue().ToString();
 				string text3;
 				try
 				{
-					text3 = ((BurikoMemory.Instance.GetFlag("NVL_in_ADV").IntValue() != 1) ? "" : "You can not swap NVL-ADV now\n");
+					text3 = ((BurikoMemory.Instance.GetFlag("NVL_in_ADV").IntValue() != 1) ? "" : "Không thể chuyển chế độ NVL-ADV lúc này\n");
 				}
 				catch (Exception)
 				{
@@ -598,7 +598,7 @@ namespace Assets.Scripts.UI
 				string text4;
 				try
 				{
-					text4 = ((BurikoMemory.Instance.GetFlag("DisableModHotkey").IntValue() != 1) ? "" : "You can not use Hotkey\n1,2,3,4,5,6,F2,F3 for avoid bug\n");
+					text4 = ((BurikoMemory.Instance.GetFlag("DisableModHotkey").IntValue() != 1) ? "" : "Bạn có thể sử dụng phím nóng\n1,2,3,4,5,6,F2,F3 để tránh các bug không mong muốn\n");
 				}
 				catch (Exception)
 				{
@@ -607,19 +607,19 @@ namespace Assets.Scripts.UI
 				string text5 = "";
 				if (!gameSystem.CanSave)
 				{
-					text5 = "You can't save now\n";
+					text5 = "Lúc này bạn chưa thể lưu\n";
 				}
 				string text6 = "";
 				if (!gameSystem.CanInput)
 				{
-					text6 = "Game avoid any input now\n";
+					text6 = "Game từ chối nhập liệu\n";
 				}
-				string text7 = "[MOD SETTINGS]\nADV-MODE = " + array2[0] + "\nLip-Sync = " + array2[5] + "\nAlternative BGM = " + array2[1] + "\nAlternative BGM Flow = " + array6[2] + array5[2] + "\nAlternative SE = " + array2[2] + "\nAlternative SE Flow = " + array6[3] + array5[3] + "\nAlternative Voice = " + array2[3] + "\nAlternative Voice Priority = " + array2[4] + "\nVoice Matching Level = " + array6[0] + array5[0] + "\nEffect Level = " + array6[1] + array5[1] + "\nVoice Volume = " + text2 + "\n\n[Restore Game Settings]" + text + "\n\n[Status]\n" + text4 + text3 + text5 + text6;
+				string text7 = "[HIỆU CHỈNH MOD]\nADV-MODE = " + array2[0] + "\nNhép môi = " + array2[5] + "\nBGM thay thế = " + array2[1] + "\nAlternative BGM Flow = " + array6[2] + array5[2] + "\nSE thay thế = " + array2[2] + "\nAlternative SE Flow = " + array6[3] + array5[3] + "\nGiọng thay thế = " + array2[3] + "\nĐộ ưu tiên giọng thay thế = " + array2[4] + "\nMức độ đồng bộ giọng = " + array6[0] + array5[0] + "\nMức hiệu ứng = " + array6[1] + array5[1] + "\nÂm lượng giọng = " + text2 + "\n\n[Khôi phục cài đặt gốc]" + text + "\n\n[Trạng thái]\n" + text4 + text3 + text5 + text6;
 				GUI.TextArea(new Rect(0f, 0f, 320f, 1080f), text7, 900);
 			}
 			if (BurikoMemory.Instance.GetGlobalFlag("GFlagMonitor").IntValue() == 2)
 			{
-				string text8 = "[Vanilla Hotkey]\nEnter,Return,RightArrow,PageDown : Advance Text\nLeftArrow,Pageup : See Backlog\nESC : Open Menu\nCtrl : Hold Skip Mode\nA : Auto Mode\nS : Toggle Skip Mode\nF : FullScreen\nSpace : Hide Text\nL : Swap Language\nP : Swap Sprites\n\n[MOD Hotkey]\nF1 : ADV-NVL MODE\nF2 : Voice Matching Level\nF3 : Effect Level\nF5 : QuickSave\nF7 : QuickLoad\nF10 : Setting Monitor\nM : Increase Voice Volume\nN : Decrease Voice Volume\n1 : Alternative BGM\n2 : Alternative BGM Flow\n3 : Alternative SE\n4 : Alternative SE Flow\n5 : Alternative Voice\n6 : Alternative Voice Priority\n7 : Lip-Sync\nLShift + F9 : Restore Settings\nLShift + M : Voice Volume MAX\nLShift + N : Voice Volume MIN";
+				string text8 = "[Phím nóng bản gốc]\nEnter,Return,RightArrow,PageDown : Đọc tiếp thoại\nLeftArrow,Pageup : Lược sử\nESC : Mở menu\nCtrl : Chế độ tua giữ nút\nA : Tự động đọc\nS : Chế độ tự động tua\nF : Toàn màn hình\nSpace : Ẩn khung thoại\nL : Đổi ngôn ngữ\nP : Đổi sprite nhân vật\n\n[Phím nóng bản mod]\nF1 : Chế độ ADV-NVL\nF2 : Độ đồng bộ giọng\nF3 : Mức hiệu ứng\nF5 : Lưu nhanh\nF7 : Tải nhanh\nF10 : Menu hiệu chỉnh mod\nM : Tăng âm lượng giọng\nN : Giảm âm lượng giọng\n1 : BGM thay thế\n2 : Alternative BGM Flow\n3 : SE thay thế\n4 : Alternative SE Flow\n5 : Giọng thay thế\n6 : Độ ưu tiên giọng thay thế\n7 : Nhép môi\nLShift + F9 : Khôi phục cài đặt gốc\nLShift + M : Âm lượng giọng lớn nhất\nLShift + N : Âm lượng giọng nhỏ nhất";
 				GUI.TextArea(new Rect(320f, 0f, 320f, 1080f), text8, 900);
 			}
 			if (BurikoMemory.Instance.GetGlobalFlag("GFlagMonitor").IntValue() >= 3)
